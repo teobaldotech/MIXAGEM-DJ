@@ -1,33 +1,39 @@
-🎧 Sonic Fusion - DJ Mixer Pro
-​Sonic Fusion is a professional-grade, browser-based DJ mixing studio designed with an immersive cyberpunk aesthetic, advanced Web Audio API routing, dual-deck waveforms, 3-band EQs, custom crossfader curves, real-time DSP effects, and session recording capabilities.
-​✨ Key Features
-​Interactive Cover & Splash Screen: Features neon glowing buttons (Pré-escuta, Iniciar Mixagem, and Gravar) with smooth entry animations into the mixing console.
-​Dual Deck Architecture (Deck A & Deck B): Independent track loading, playback, cue point setting, variable pitch/tempo control, and 4-second looping.
-​WaveSurfer.js Integration: High-definition waveform visualization for precise track positioning and timeline monitoring.
-​Real-Time Spectrum Analyzer: Dynamic canvas frequency visualizers responding instantly to audio output.
-​Professional 3-Band Equalizer: Dedicated Low (shelving), Mid (peaking), and High (shelving) frequency control per deck powered by Web Audio API Biquad filters.
-​Advanced Crossfader: Smooth mixing between Deck A and Deck B with selectable curve algorithms (Linear, Exponential, Logarithmic, and S-Curve).
-​DSP Effect Rack: Instant application of Sweep filters, Reverb convolutions, and Delay echoes.
-​Live Session Recorder: Capture your live DJ mix directly in the browser via MediaRecorder API and export as a .webm audio file.
-​🚀 Getting Started
-​No complex installation or build tools (like Node.js or Webpack) are required. Because Sonic Fusion is built as a Single-File Web Application, it runs entirely inside any modern web browser.
-​Prerequisites
-​A modern web browser with HTML5 and Web Audio API support (Google Chrome, Mozilla Firefox, Microsoft Edge, or Safari).
-​Running the Application
-​Clone or download this repository.
-​Open the index.html file directly in your web browser (double-click the file or drag and drop it into an open browser window).
-​Click on "Iniciar Mixagem" on the splash screen to initialize the audio context and open the mixing console.
-​🕹️ How to Use
-​Load Tracks: Click on the upload area (Carregar MP3/WAV) in Deck A or Deck B to select local audio files from your device.
-​Play & Monitor: Use the PLAY and PAUSE buttons. Use Set Cue and Go to Cue to manage cue points.
-​Mix: Adjust individual track volumes, use the 3-band EQs to blend frequencies, and slide the Crossfader to transition between decks.
-​Apply Effects: Select your target deck in the DSP Effect Rack and trigger Sweep, Reverb, or Delay.
-​Record Your Mix: Click GRAVAR in the recorder panel to start capturing your audio session, then click PARAR to generate and download your .webm recording.
-​🛠️ Built With
-​HTML5 & CSS3: Styled with modern Tailwind CSS utilities and custom glassmorphism effects.
-​JavaScript (ES6+): Core application logic and state management.
-​Web Audio API: Low-latency audio routing nodes, filters, analysers, and stream destinations.
-​WaveSurfer.js (v7): Interactive audio waveform rendering.
-​FontAwesome & Google Fonts: Icons and typography (Orbitron & Inter).
-​📜 License
-​This project is open-source and available under the MIT License.
+# Sonic Fusion — DJ Mixer Pro
+
+Aplicativo web e híbrido (Capacitor / Android) de mixagem musical com dois decks (**Deck A** e **Deck B**), equalização de 3 bandas, controle de pitch/volume, crossfader com múltiplas curvas, efeitos DSP (Sweep Filter, Reverb e Delay), gravação de sessão e integração com **Google AdMob**.
+
+---
+
+## Funcionalidades
+
+* **Decks Duplos (A e B):**
+  * Carregamento de arquivos de áudio locais (`<input type="file" accept="audio/*">`).
+  * Controles de **Play**, **Pause**, **Cue**, **Go Cue**, **Loop** e **Stop**.
+  * Ajustes de **Volume**, **Pitch** (*playbackRate*) e equalizador de 3 bandas (**Graves**, **Médios** e **Agudos**).
+  * Visualização de forma de onda com **WaveSurfer.js** e analisador de espectro em tempo real no `<canvas>`.
+* **Crossfader com Curvas:**
+  * Modos **Linear**, **Exponencial**, **Logarítmica** e **Curva em S**.
+* **Painel de Efeitos (DSP FX):**
+  * **Sweep Filter** no deck selecionado.
+  * **Reverb** e **Delay** com chaveamento **ON / OFF** sem acúmulo de nós de áudio.
+* **Gravação da Sessão:**
+  * Captura o áudio mixado (incluindo efeitos) via `MediaRecorder`.
+  * No **Android (Capacitor)**, salva o arquivo em cache via `@capacitor/filesystem` e abre o compartilhamento/salvamento nativo via `@capacitor/share`.
+  * No navegador web, disponibiliza download direto do arquivo `.webm`.
+* **Monetização (Google AdMob):**
+  * Banner na parte inferior e anúncio intersticial ao encerrar a gravação (com intervalo mínimo configurável entre exibições).
+* **Política de Privacidade:**
+  * Modal informativo integrado no rodapé do aplicativo, com suporte para URL pública externa e e-mail de contato.
+
+---
+
+## Estrutura Recomendada do Projeto (Capacitor)
+
+```text
+sonic-fusion/
+├── index.html
+├── assets/
+│   ├── wavesurfer.min.js   # Recomendado para uso offline/estável
+│   └── cover-bg.jpg        # Imagem de fundo da tela inicial
+├── android/                # Projeto nativo gerado pelo Capacitor
+└── README.md
